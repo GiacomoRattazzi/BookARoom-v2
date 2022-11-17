@@ -1,4 +1,4 @@
-package com.mycompany.bookaroom.v2;
+package bookaroom.v2.resources;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

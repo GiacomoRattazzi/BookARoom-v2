@@ -101,12 +101,17 @@ public class RoomBean implements Serializable{
         throw new DoesNotExistException("Room " + roomName + " does not exist or is not booked.");
     }
 
-    public static ArrayList<Room> getRooms() {
+    public ArrayList<Room> getRooms() {
         return MockDatabase.getInstance().getRooms();
     }
+    
+     public String getTesting() {
+        return "ah";
+    }
+
 
     //TEST
-    public static HashMap<String, ArrayList<LocalDate>> getBookedDates() {
+    public HashMap<String, ArrayList<LocalDate>> getBookedDates() {
         return MockDatabase.getInstance().getBookedDates();
     }
     //END TEST

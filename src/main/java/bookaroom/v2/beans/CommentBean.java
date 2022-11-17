@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author Team BookARoom
  */
 
-@Named(value = "loginBean")
+@Named(value = "commentBean")
 @SessionScoped
 public class CommentBean implements Serializable{
 
