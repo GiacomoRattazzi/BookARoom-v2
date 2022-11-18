@@ -27,7 +27,7 @@ public class Room {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
+   
 // Totally useless ------------------------------------------
     public ArrayList<String> getDescription() {
         return description;
@@ -39,8 +39,7 @@ public class Room {
 
     public double getPrice() {
         return price;
-    }
-    
+    }    
     
     public ArrayList<String> getDates() {
         return datesbooked;
