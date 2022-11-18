@@ -18,6 +18,12 @@
                 <h:inputText value="#{userBean.email}" />
                 <h:outputText value="Password"/>
                 <h:inputSecret value="#{userBean.password}" />
+                <h:outputText value="Credit card number"/>
+                <h:inputSecret value="#{userBean.CCnumber}" />
+                <h:outputText value="Credit card code"/>
+                <h:inputSecret value="#{userBean.CCCode}" />
+                <h:outputText value="Credit card expiration date"/>
+                <h:inputSecret value="#{userBean.CCExpirationDate}"/>
                 <br/>
                 <h:commandButton value="Create a User" action="#{userBean.createAUser()}"/>
                 <br/>
