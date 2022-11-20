@@ -54,6 +54,9 @@ public class User {
         return email;
     }
     
+    public int getPassword() {
+        return password;
+    }
     public int getCCnumber() {
         return CCnumber;
     }

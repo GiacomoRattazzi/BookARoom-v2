@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatter;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
 
 
 /*
@@ -35,12 +37,13 @@ public class UserBean implements Serializable {
     private final YearMonth CurrentTime = YearMonth.now();
     private final DateTimeFormatter Dateformatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final LocalDate CurrentTimeLong = LocalDate.now();
+    private static final Scanner sc = new Scanner(System.in);
     
     
     public void createAUser() {
         try {
             if (!emailExists() && !usernameExists()) {
-                MockDatabase.getInstance().addAUser(new User(username, firstName, lastName, email, password, CCnumber, CCcode, CCexpirationdate));
+            MockDatabase.getInstance().addAUser(new User(username, firstName, lastName, email, password, CCnumber, CCcode, CCexpirationdate));
             }
         } catch (AlreadyExistsException | DoesNotExistException ex ) {
             System.out.println(ex.getMessage());
@@ -170,16 +173,63 @@ public class UserBean implements Serializable {
         this.username = username;
     }
     
-    public void setCCnumber(String CCnumber) {
-         this.CCnumber = CCnumber;
+    public void setCCNumber(String nccnumber) {
+                String code1 = "";
+                boolean numCorrect = false;
+                while(!numCorrect){
+
+                    System.out.println("Update credit card number (16-digit number):"); 
+                    code1 = sc.nextLine();
+                    if (code1.length()!=16) {
+                        System.out.println("The credit card number should a 16-digit number, yours is a "+code1.length()+"-digit number. Please enter it again");
+                        }
+                    else if (code1.length()==16)
+                        numCorrect =true;
+                nccnumber = code1;}
+         this.CCnumber = nccnumber;
     }
     
-    public void setCCcode(String CCcode) {
-         this.CCcode = CCcode;
+    public void setCCcode(String ncccode) {
+                String code2 = "";
+                boolean codeCorrect = false;
+                while(!codeCorrect){
+                    System.out.println("Enter a verification code (3-digit number):");
+                    code2 = sc.nextLine();
+                    if (code2.length()!=3) {
+                        System.out.println("The credit card number should a 3-digit number, yours is a "+code2.length()+"-digit number. Please enter it again");
+                        }
+                    else if (code2.length()==3)
+                        codeCorrect =true;
+                ncccode = code2;}
+         this.CCcode = ncccode;
     }
     
-    public void setCCexpirationDate(String CCexpirationdate) {
-        this.CCexpirationdate = CCexpirationdate;
+    public void setCCExpirationDate(String nccexpirationdate) {
+                        /*        boolean CCDateValid = false;
+                                while(!CCDateValid){
+                                System.out.println("Update expiration date (month/year => MM/yy):");
+                                nccexpirationdate = sc.nextLine();
+                        
+                                try
+                                {
+                                    YearMonth ccexpdateFormat = YearMonth.parse(nccexpirationdate, UserController.getFormatter()); 
+                                    System.out.println(nccexpirationdate+" is valid date format.");
+                                    boolean valid = UserController.getCurrentTime().isBefore(ccexpdateFormat);
+                            
+                                    if (valid==true) {
+                                        System.out.println("Credit Card is still valid.");
+                                        CCDateValid = true;
+                                    } 
+                                    else {
+                                        System.out.println("Credit Card has expired.");
+                                    }
+                                }
+                                catch (DateTimeParseException e)
+                                {
+                                    System.out.println(nccexpirationdate+" is not a valid Date format.");
+                                }
+                                } */
+        this.CCexpirationdate = nccexpirationdate;
     } 
     
     public void completeBooking() {

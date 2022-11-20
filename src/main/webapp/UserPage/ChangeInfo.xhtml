@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>BookARoom</title>
+    </h:head>
+    <h:body>
+        <h:panelGrid columns="2">
+                <h:outputText value="New username:"/>
+                <h:inputText value="#{loginBean.currentUser.username}"/>
+                <h:outputText value="New first name:"/>
+                <h:inputText value="#{loginBean.currentUser.firstName}"/>
+                <h:outputText value="New last name"/>
+                <h:inputText value="#{loginBean.currentUser.lastName}"/>
+                <h:outputText value="New email"/>
+                <h:inputText value="#{loginBean.currentUser.email}"/>
+                <h:outputText value="New password"/>
+                <h:inputText value="#{loginBean.currentUser.password}"/>
+                <h:outputText value="New credit card number"/>
+                <h:inputText value="#{loginBean.currentUser.CCnumber}"/>
+                <h:outputText value="New credit card code"/>
+                <h:inputText value="#{loginBean.currentUser.CCcode}"/>
+                <h:outputText value="New credit card expiration date"/>
+                <h:inputText value="#{loginBean.currentUser.CCExpirationDate}"/>
+            </h:panelGrid>
+        <h:commandButton value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+    </h:body>
+</html>
+
