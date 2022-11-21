@@ -54,18 +54,15 @@ public class User {
         return email;
     }
     
-    public int getPassword() {
-        return password;
-    }
     public int getCCnumber() {
         return CCnumber;
     }
     
-    public int getCCCode() {
+    public int getCCcode() {
         return CCcode;
     }
     
-    public String getCCExpirationDate() {
+    public String getCCexpirationdate() {
         return CCexpirationdate;
     }
 
@@ -93,7 +90,7 @@ public class User {
          this.CCcode = CCcode;
     }
     
-    public void setCCexpirationDate(String CCexpirationdate) {
+    public void setCCexpirationdate(String CCexpirationdate) {
         this.CCexpirationdate = CCexpirationdate;
     }        
 

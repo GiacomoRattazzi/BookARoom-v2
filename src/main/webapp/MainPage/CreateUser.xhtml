@@ -10,7 +10,7 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputText value="Username"/>
-                <h:inputText value="#{UserBean.username}" />
+                <h:inputText value="#{userBean.username}" />
                 <h:outputText value="First Name"/>
                 <h:inputText value="#{userBean.firstName}" />
                 <h:outputText value="Last Name"/>
@@ -22,14 +22,14 @@
                 <h:outputText value="Credit card number"/>
                 <h:inputSecret value="#{userBean.CCnumber}" />
                 <h:outputText value="Credit card code"/>
-                <h:inputSecret value="#{userBean.CCCode}" />
+                <h:inputSecret value="#{userBean.CCcode}" />
                 <h:outputText value="Credit card expiration date"/>
-                <h:inputText value="#{userBean.CCExpirationDate}">  
+                <h:inputText value="#{userBean.CCexpirationdate}">  
                     <f:convertDateTime pattern="dd-MM-yyyy"/>  
                 </h:inputText>
                 <br/>
                 <h:commandButton value="Create a User" 
-                                 action="#{UserBean.createAUser()}"/>
+                                 action="#{userBean.createAUser()}"/>
                 <br/>
                 <h:commandButton value="Go Back to Main Menu" 
                                  action="/MainPage/MainPage.xhtml?faces-redirect=true"/>
