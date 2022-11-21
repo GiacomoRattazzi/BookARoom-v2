@@ -20,12 +20,12 @@
                 <h:outputText value="Password"/>
                 <h:inputSecret value="#{userBean.password}" />
                 <h:outputText value="Credit card number"/>
-                <h:inputSecret value="#{userBean.CCnumber}" />
+                <input value="#{userBean.CCnumber}" minlength="16" maxlength="16" size="20" pattern="[0-9]{16}"/>
                 <h:outputText value="Credit card code"/>
-                <h:inputSecret value="#{userBean.CCcode}" />
+                <input value="#{userBean.CCcode}" minlength="3" maxlength="3" size="4" pattern="[0-9]{3}"/>
                 <h:outputText value="Credit card expiration date"/>
                 <h:inputText value="#{userBean.CCexpirationdate}">  
-                    <f:convertDateTime pattern="dd-MM-yyyy"/>  
+                    <f:convertDateTime pattern="MM/yy"/>  
                 </h:inputText>
                 <br/>
                 <h:commandButton value="Create a User" 
