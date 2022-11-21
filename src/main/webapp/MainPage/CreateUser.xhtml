@@ -22,7 +22,7 @@
                 <h:outputText value="Credit card number"/>
                 <input value="#{userBean.CCnumber}" minlength="16" maxlength="16" size="20" pattern="[0-9]{16}"/>
                 <h:outputText value="Credit card code"/>
-                <input value="#{userBean.CCcode}" minlength="3" maxlength="3" size="4" pattern="[0-9]{3}"/>
+                <input value="#{userBean.CCcode}" minlength="3" maxlength="3" size="10" pattern="[0-9]{3}" oninvalid="this.setCustomValidity('Credit card code should be a 3-digit number')"/>
                 <h:outputText value="Credit card expiration date"/>
                 <h:inputText value="#{userBean.CCexpirationdate}">  
                     <f:convertDateTime pattern="MM/yy"/>  
