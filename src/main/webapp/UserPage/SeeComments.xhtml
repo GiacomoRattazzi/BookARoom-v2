@@ -11,11 +11,10 @@
             <h:panelGrid columns="2">
                 <h:outputText value="Comments" style="font-size: 30px"/>
                 <br/>
-                <ui:repeat value="#{commentBean.comment}" var="item">
+                <ui:repeat value="#{commentBean.comments}" var="item">
                     <h:outputText value="-----" />
                     <h:panelGrid columns="2">
-                        <h:outputText value="Comments:" />
-                        <h:outputText value="#{comment}" />
+                        <h:outputText value="#{item.comment}" />
                     </h:panelGrid>
                     <h:outputText value="-----" />
                 </ui:repeat>

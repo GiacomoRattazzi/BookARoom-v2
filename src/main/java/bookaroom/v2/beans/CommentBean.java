@@ -25,7 +25,7 @@ public class CommentBean implements Serializable{
     private DateTimeFormatter formatterComment = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             
 
-    public static ArrayList<Comment> getComments() {
+    public ArrayList<Comment> getComments() {
         return MockDatabase.getInstance().getComments();
     }
     
