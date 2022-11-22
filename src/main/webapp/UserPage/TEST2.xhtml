@@ -20,7 +20,7 @@
         <h:panelGrid columns="2" cellpadding="5">
             
             <p:outputLabel for="range" value="Range Selection:" />
-            <p:datePicker id="range" selectionMode="range" value="#{testBean.range}" readonlyInput="true" showIcon="true" />
+            <p:datePicker id="range" selectionMode="range" value="#{testBean.range}" readonlyInput="true" showIcon="true" mindate="#{testBean.today}" />
             <h:outputText value="test:"/>
             <h:outputText value="#{testBean.range}"/>
         </h:panelGrid>

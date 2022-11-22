@@ -31,7 +31,8 @@ import org.primefaces.event.SelectEvent;
 public class TestBean implements Serializable {
  
     private List<LocalDate> range;
-
+    private LocalDate today;
+    
     public void click() {
         PrimeFaces.current().ajax().update("form:display");
         PrimeFaces.current().executeScript("PF('dlg').show()");
@@ -44,5 +45,13 @@ public class TestBean implements Serializable {
     public void setRange(List<LocalDate> range) {
         this.range = range;
     }
- 
+    
+    public LocalDate getToday() {
+        return LocalDate.now();
+    }
+    
+    public void setToday() {
+        this.today = today;
+    }
+    
 }
