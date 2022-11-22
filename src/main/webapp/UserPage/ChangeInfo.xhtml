@@ -6,7 +6,8 @@
         <title>BookARoom</title>
     </h:head>
     <h:body>
-        <h:panelGrid columns="2">
+        <h:form>
+            <h:panelGrid columns="2">
                 <h:outputText value="New username:"/>
                 <h:inputText value="#{loginBean.currentUser.username}"/>
                 <h:outputText value="New first name:"/>
@@ -15,8 +16,9 @@
                 <h:inputText value="#{loginBean.currentUser.lastName}"/>
                 <h:outputText value="New email"/>
                 <h:inputText value="#{loginBean.currentUser.email}"/>
+                <h:commandButton value="Save and Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
             </h:panelGrid>
-        <h:commandButton value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+        </h:form>
     </h:body>
 </html>
 
