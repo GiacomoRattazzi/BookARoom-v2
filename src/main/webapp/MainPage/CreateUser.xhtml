@@ -2,7 +2,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    
+    
     <h:head>
         <title>BookARoom</title>
     </h:head>
@@ -23,14 +26,14 @@
                 <input value="#{userBean.CCnumber}" minlength="16" maxlength="16" size="20" pattern="[0-9]{16}"/>
                 <h:outputText value="Credit card code"/>
                 <input value="#{userBean.CCcode}" minlength="3" maxlength="3" size="10" pattern="[0-9]{3}" oninvalid="this.setCustomValidity('Credit card code should be a 3-digit number')"/>
+                
                 <h:outputText value="Credit card expiration date"/>
-                <h:inputText value="#{userBean.CCexpirationdate}">  
-                    <f:convertDateTime pattern="MM/yy"/>  
-                </h:inputText>
-                <br/>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:datePicker id="month" view="month" value="#{userBean.CCexpirationdate}" pattern="MM/yy" yearNavigator="true" yearRange="2000:2030" />
+                </h:panelGrid>
+                   
                 <h:commandButton value="Create a User" 
                                  action="#{userBean.createAUser()}"/>
-                <br/>
                 <h:commandButton value="Go Back to Main Menu" 
                                  action="/MainPage/MainPage.xhtml?faces-redirect=true"/>
             </h:panelGrid>
