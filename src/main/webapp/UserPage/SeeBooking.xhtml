@@ -6,9 +6,13 @@
         <title>BookARoom</title>
     </h:head>
     <h:body>
-        <h:outputText value="Booking information:"/>
-        <h:outputText value="#{loginBean.currentUser.booking}"/>
-        <h:commandButton value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputText value="Booking information:"/>
+                <h:outputText value="#{loginBean.currentUser.booking}"/>
+                <h:commandButton value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+            </h:panelGrid>
+        </h:form>    
     </h:body>
 </html>
 
