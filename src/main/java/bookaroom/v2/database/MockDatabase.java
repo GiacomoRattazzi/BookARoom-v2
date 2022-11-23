@@ -21,7 +21,9 @@ public class MockDatabase {
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Room> rooms = new ArrayList<Room>();
     private ArrayList<Comment> comments = new ArrayList<Comment>();
-    private ArrayList<Rating> ratings = new ArrayList<Rating>;
+    
+    private ArrayList<Rating> ratings = new ArrayList<Rating>();
+
     private HashMap<String, ArrayList<LocalDate>> bookedDates = new HashMap<String, ArrayList<LocalDate>>();
     private ArrayList<LocalDate> test = new ArrayList<LocalDate>();
     private ArrayList<LocalDate> test2 = new ArrayList<LocalDate>();
@@ -163,7 +165,6 @@ public class MockDatabase {
         comments.add(new Comment("Paul: The beds are comfortable. (08/10/2022)"));
         comments.add(new Comment("Marine: The bathroom is not very clean. (24/10/2022)"));
         
-        ratings.add(new Rating());    
         
         }
     
@@ -185,7 +186,8 @@ public class MockDatabase {
     public void addAComment(Comment comment) {
         comments.add(comment);
     }
-
+    
+  
 
     public void removeAUser(User user) {
         users.remove(user);
@@ -215,6 +217,15 @@ public class MockDatabase {
     public HashMap<String, ArrayList<LocalDate>> getBookedDates() {
         return bookedDates;
     }
+    
+    /*ublic void addRating((Rating rating)){
+        ratings.add(rating);
+    }*/
+    
+    public ArrayList<Rating> getRatings() {
+        return ratings;
+    }
+     
 
 }
 

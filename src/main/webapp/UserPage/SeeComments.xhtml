@@ -16,13 +16,14 @@
                     <h:outputText value="-----" />
                     <h:panelGrid columns="2">
                         <h:outputText value="#{item.comment}" />
-                        <p:rating value="#{ratingView.rating1}" />
+                        <p:rating value="#{ratingView.rating}" readonly="true" />
                     </h:panelGrid>
                     <h:outputText value="-----" />
                 </ui:repeat>
                 <br/>
                 <h:outputText value="New Comment"/>
                 <h:inputText value="#{commentBean.comment}" />
+                <p:rating value="#{ratingView.rating}" />
                 <br/>
                 <h:commandButton value="Add the comment" action="#{commentBean.addCommentFromUser()}"/>
                 <br/>
