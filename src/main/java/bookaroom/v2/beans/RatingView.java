@@ -38,4 +38,8 @@ public class RatingView {
         this.rating3 = rating3;
     }    
     
+    /*public void addRatingFromUser(){
+        User user = LoginBean.getUserLoggedIn();
+        MockDatabase.getInstance().addARating(new Rating(rating));
+    }*/
 }
