@@ -8,6 +8,7 @@ import java.time.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import org.primefaces.component.rating.Rating;
 /**
  * Software Architectures | DOPLab | UniL
  *
@@ -20,6 +21,7 @@ public class MockDatabase {
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Room> rooms = new ArrayList<Room>();
     private ArrayList<Comment> comments = new ArrayList<Comment>();
+    private ArrayList<Rating> ratings = new ArrayList<Rating>;
     private HashMap<String, ArrayList<LocalDate>> bookedDates = new HashMap<String, ArrayList<LocalDate>>();
     private ArrayList<LocalDate> test = new ArrayList<LocalDate>();
     private ArrayList<LocalDate> test2 = new ArrayList<LocalDate>();
@@ -158,10 +160,11 @@ public class MockDatabase {
         }));
                
        
-        comments.add(new Comment("Paul: This is great. (08/10/2022)"));
-        comments.add(new Comment("Marine: This is terrible. (24/10/2022)"));
+        comments.add(new Comment("Paul: The beds are comfortable. (08/10/2022)"));
+        comments.add(new Comment("Marine: The bathroom is not very clean. (24/10/2022)"));
         
-             
+        ratings.add(new Rating());    
+        
         }
     
      

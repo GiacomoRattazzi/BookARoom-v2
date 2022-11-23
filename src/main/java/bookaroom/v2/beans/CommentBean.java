@@ -23,7 +23,7 @@ public class CommentBean implements Serializable{
     private String comment = "";
     private LocalDateTime now = LocalDateTime.now();
     private DateTimeFormatter formatterComment = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            
+    
 
     public ArrayList<Comment> getComments() {
         return MockDatabase.getInstance().getComments();
