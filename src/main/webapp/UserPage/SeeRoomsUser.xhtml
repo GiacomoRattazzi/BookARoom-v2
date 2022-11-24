@@ -16,10 +16,8 @@
 
                 
             </p:selectOneListbox>
-            <h:commandButton id="submit" value="Submit"> 
-                <f:ajax event="click" />
-             
-            </h:commandButton>
+            <h:commandButton value="Book this room" action="/UserPage/TEST2.xhtml?faces-redirect=true"/>
+            
             <h:outputText id="result" value="#{roomBean.roomName}" />
 
         </h:form>
