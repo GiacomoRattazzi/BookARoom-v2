@@ -20,31 +20,37 @@
         <h:panelGrid columns="2" cellpadding="5">
             
             <p:outputLabel for="range" value="Range Selection:" />
-            <p:datePicker id="range" selectionMode="range" value="#{testBean.range}" readonlyInput="true" showIcon="true" mindate="#{testBean.today}"/>
+            <p:datePicker id="range" selectionMode="range" value="#{roomBean.range}" readonlyInput="true" showIcon="true" mindate="#{roomBean.today}"/>
             <h:outputText value="test:"/>
-            <h:outputText value="#{testBean.range}"/>
+            <h:outputText value="#{roomBean.range}"/>
             <h:outputText value="test:"/>
-            <h:outputText value="#{testBean.datesBetween}"/>
+            <h:outputText value="#{roomBean.datesBetween}"/>
             <h:outputText value="roomEmpty:"/>
-            <h:outputText value="#{testBean.result}"/>
+            <h:outputText value="#{roomBean.result}"/>
             <h:outputText value="dateschecking:"/>
-            <h:outputText value="#{testBean.result2}"/>
+            <h:outputText value="#{roomBean.result2}"/>
             <h:outputText value="datesBooked:"/>
-            <h:outputText value="#{testBean.result3}"/>
+            <h:outputText value="#{roomBean.result3}"/>
             <h:outputText value="datesBooked:"/>
-            <h:outputText value="#{testBean.bookedDates}"/>
+            <h:outputText value="#{roomBean.bookedDates}"/>
+            <h:outputText value="You are booking:"/>
+            <h:outputText value="#{roomBean.roomName}"/>
+            
 
         </h:panelGrid>
         
-        <p:commandButton value="test" action="#{testBean.dateFor}"  />
-        <p:commandButton value="Submit" update="msgs" action="#{testBean.click}" icon="pi pi-check" />
-        <p:commandButton value="addRooms" action="#{testBean.addDatesBooked}" />
         
+        <p:commandButton value="Submit" update="msgs" action="#{roomBean.click}" icon="pi pi-check" />
+        <p:commandButton value="try" action="#{roomBean.finish}"/>
+     
+            
+     
+            
         <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
             <p:panelGrid id="display" columns="4" columnClasses="label,value,label,value">
                 
                 <h:outputText value="Range Selection:" />
-                <ui:repeat var="date" value="#{testBean.range}" varStatus="status" size="#{testBean.range.size()}">
+                <ui:repeat var="date" value="#{roomBean.range}" varStatus="status" size="#{roomBean.range.size()}">
                     #{status.first ? '' : '-'}
                     <h:outputText value="#{date}">
                         <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>

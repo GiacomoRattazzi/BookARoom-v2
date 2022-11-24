@@ -32,20 +32,37 @@ public class MockDatabase {
     private ArrayList<LocalDate> test = new ArrayList<LocalDate>();
     private ArrayList<LocalDate> test2 = new ArrayList<LocalDate>();
     private ArrayList<LocalDate> nullFix = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix2 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix3 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix4 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix5 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix6 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix7 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix8 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix9 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix10 = new ArrayList<LocalDate>();
+    
     private MockDatabase() {
  
         
-        nullFix.add(LocalDate.of(0000,01,01));
+        //nullFix.add(LocalDate.of(0000,01,01));
         
-        test.add(LocalDate.of(2022,12,11));
-        test.add(LocalDate.of(2023,12,11));
-        test.add(LocalDate.of(2024,12,11));
+        //test.add(LocalDate.of(2022,12,11));
+        //test.add(LocalDate.of(2023,12,11));
+        //test.add(LocalDate.of(2024,12,11));
         bookedDates.put("Room 1", nullFix);
-        test2.add(LocalDate.of(2026,12,11));
-        test2.add(LocalDate.of(2027,12,11));
-        test2.add(LocalDate.of(2028,12,11));
-        bookedDates.put("Room 2", test2);
-        
+        //test2.add(LocalDate.of(2026,12,11));
+        //test2.add(LocalDate.of(2027,12,11));
+        //test2.add(LocalDate.of(2028,12,11));
+        bookedDates.put("Room 2", nullFix2);
+        bookedDates.put("Room 3", nullFix3);
+        bookedDates.put("Room 4", nullFix4);
+        bookedDates.put("Room 5", nullFix5);
+        bookedDates.put("Room 6", nullFix6);
+        bookedDates.put("Room 7", nullFix7);
+        bookedDates.put("Room 8", nullFix8);
+        bookedDates.put("Room 9", nullFix9);
+        bookedDates.put("Room 10", nullFix10);
         
     
         users.add(new User("jwang", "jingmin", "wang", "jingmin.wang@unil.ch", "1234","0000000000000000","123",new Date(2026,10,01)));
@@ -235,7 +252,7 @@ public class MockDatabase {
     
     public void setDates(List<LocalDate> dates, String roomName) {
         for (LocalDate d : dates) {
-                bookedDates.get("Room 1").add(d);
+                bookedDates.get(roomName).add(d);
         }
     }
 

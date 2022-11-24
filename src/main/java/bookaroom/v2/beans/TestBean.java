@@ -35,20 +35,18 @@ public class TestBean implements Serializable {
  
     private List<LocalDate> range = null;
     private List<LocalDate> betweenRange;
-    //Maybe not needed: private LocalDate today;
     private Boolean boo =true;
     private LocalDate test1;
     private Boolean roomEmpty = true;
     private String temp1;
     private String temp2;
-    private List<LocalDate> aa;
     
     public void click() {
         if (roomEmpty == false) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "This date is already booked: " + temp2 ));
-        }   else {
-             PrimeFaces.current().ajax().update("form:display");
-             PrimeFaces.current().executeScript("PF('dlg').show()");
+        }else {
+            PrimeFaces.current().ajax().update("form:display");
+            PrimeFaces.current().executeScript("PF('dlg').show()");
         }
     }
  
@@ -127,7 +125,20 @@ public class TestBean implements Serializable {
         this.betweenRange = betweenRange;
     }
     
-
+    public void finish() {
+        dateFor(); 
+        if (roomEmpty==false) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "This date is already booked: " + temp2 ));
+        }else{
+            addDatesBooked();
+            
+            PrimeFaces.current().ajax().update("form:display");
+            PrimeFaces.current().executeScript("PF('dlg').show()");
+        
+        
+        }
+        }
+    
 
     
     //Maybe not needed 
