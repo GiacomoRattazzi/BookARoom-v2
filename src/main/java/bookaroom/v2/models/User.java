@@ -1,6 +1,8 @@
 package bookaroom.v2.models;
 
 import bookaroom.v2.exceptions.InvalidCreditCardDateException;
+import java.time.YearMonth;
+import java.util.Date;
 
 /*
  * @author Team BookARoom
@@ -15,10 +17,10 @@ public class User {
     private int password;
     private int CCnumber;
     private int CCcode;
-    private String CCexpirationdate;
+    private Date CCexpirationdate;
     private Booking booking;
 
-    public User(String username, String firstName, String lastName, String email, String password, String CCnumber, String CCcode, String CCexpirationdate) {
+    public User(String username, String firstName, String lastName, String email, String password, String CCnumber, String CCcode, Date CCexpirationdate) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -62,7 +64,7 @@ public class User {
         return CCcode;
     }
     
-    public String getCCexpirationdate() {
+    public Date getCCexpirationdate() {
         return CCexpirationdate;
     }
 
@@ -90,7 +92,7 @@ public class User {
          this.CCcode = CCcode;
     }
     
-    public void setCCexpirationdate(String CCexpirationdate) {
+    public void setCCexpirationdate(Date CCexpirationdate) {
         this.CCexpirationdate = CCexpirationdate;
     }        
 

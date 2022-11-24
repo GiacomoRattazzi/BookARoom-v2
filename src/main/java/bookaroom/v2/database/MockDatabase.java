@@ -3,9 +3,12 @@ package bookaroom.v2.database;
 import bookaroom.v2.models.Room;
 import bookaroom.v2.models.User;
 import bookaroom.v2.models.Comment;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.time.*;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import org.primefaces.component.rating.Rating;
@@ -45,10 +48,10 @@ public class MockDatabase {
         
         
     
-        users.add(new User("jwang", "jingmin", "wang", "jingmin.wang@unil.ch", "1234","0000000000000000","123","10/26"));
-        users.add(new User("gratt", "giacomo", "rattazzi", "giacomo.rattazzi@gmail.com", "1234", "0000000000000000","123","10/26"));
-        users.add(new User("danes", "daniel", "do vale anes", "daniel.dovaleanes@gmail.com", "1234","0000000000000000","123","10/26"));
-        users.add(new User("afarh", "ahmed", "farhat", "ahmed.farhat@gmail.com", "1234", "0000000000000000","123","10/26"));
+        users.add(new User("jwang", "jingmin", "wang", "jingmin.wang@unil.ch", "1234","0000000000000000","123",new Date(2026,10,01)));
+        users.add(new User("gratt", "giacomo", "rattazzi", "giacomo.rattazzi@gmail.com", "1234", "0000000000000000","123",new Date(2026,10,01)));
+        users.add(new User("danes", "daniel", "do vale anes", "daniel.dovaleanes@gmail.com", "1234","0000000000000000","123",new Date(2026,10,01)));
+        users.add(new User("afarh", "ahmed", "farhat", "ahmed.farhat@gmail.com", "1234", "0000000000000000","123",new Date(2026,10,01)));
 
     
 

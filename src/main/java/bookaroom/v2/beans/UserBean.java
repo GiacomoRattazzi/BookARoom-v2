@@ -14,6 +14,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.Scanner;
 
 
@@ -32,7 +33,7 @@ public class UserBean implements Serializable {
     private String password = "";
     private String CCnumber = "";
     private String CCcode = "";
-    private String CCexpirationdate = "";
+    private Date CCexpirationdate = null;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yy");
     private final YearMonth CurrentTime = YearMonth.now();
     private final DateTimeFormatter Dateformatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -82,7 +83,7 @@ public class UserBean implements Serializable {
         return false;
     }
     
-    private boolean ccNumberCorrect() throws InvalidCreditCardException {
+    /*private boolean ccNumberCorrect() throws InvalidCreditCardException {
         for (User user : MockDatabase.getInstance().getUsers()) {
             if (user.getCCnumber() !=16) {
                 throw new InvalidCreditCardException("this shit wrong");
@@ -90,8 +91,9 @@ public class UserBean implements Serializable {
         }
         return false;
     }
-
-    private boolean ExpiredCC() throws InvalidCreditCardDateException {
+    */
+    
+    /*private boolean ExpiredCC() throws InvalidCreditCardDateException {
         for (User user : MockDatabase.getInstance().getUsers()) {
             YearMonth userexpdateFormat = YearMonth.parse(user.getCCexpirationdate(), formatter); 
             boolean expired = CurrentTime.isBefore(userexpdateFormat);
@@ -103,7 +105,8 @@ public class UserBean implements Serializable {
         }
         return false;
     }
-
+    */ 
+    
     public String getEmail() {
         return email;
     }
@@ -132,7 +135,7 @@ public class UserBean implements Serializable {
         return CCcode;
     }
     
-    public String getCCexpirationdate() {
+    public Date getCCexpirationdate() {
         return CCexpirationdate;
     }
     
@@ -181,7 +184,7 @@ public class UserBean implements Serializable {
          this.CCcode = ncccode;
     }
     
-    public void setCCexpirationdate(String nccexpirationdate) {
+    public void setCCexpirationdate(Date nccexpirationdate) {
         this.CCexpirationdate = nccexpirationdate;
     } 
     
