@@ -47,23 +47,30 @@ public class RoomBean implements Serializable{
         User user = LoginBean.getUserLoggedIn();
         user.getBooking().addBookedRoomAndDates(roomName, datesbooked);
         //empty values
-        this.roomName = "";
+        //this.roomName = "";
         }
 
     public void setRoomDates(String roomanddates) {
         this.datesbooked = roomanddates;
+    }
+    
+    public void addTotalToBooking() {
+        User user = LoginBean.getUserLoggedIn();
+        user.getBooking().addTotal(roomName.toString(), getDatesBetween().toString());
     }
   
     public void addRoomToBooking() {
         User user = LoginBean.getUserLoggedIn();
         try {
             Room r = findRoomByNameInTheHotel(roomName);
-            user.getBooking().addRoom(r);
+            //user.getBooking().addRoom(r);
+            //user.getBooking().addBookedRoomAndDates(roomName, getDatesBetween().toString());
+            user.getBooking().addTotal(roomName.toString(), getDatesBetween().toString());
         } catch (DoesNotExistException ex) {
             System.out.println(ex.getMessage());
         }
         // empty values
-        this.roomName = "";
+        //this.roomName = "";
     }
     
 
@@ -275,7 +282,8 @@ public class RoomBean implements Serializable{
             
             PrimeFaces.current().ajax().update("form:display");
             PrimeFaces.current().executeScript("PF('dlg').show()");
-        
+            addTotalToBooking();
+            
         
         }
         }
