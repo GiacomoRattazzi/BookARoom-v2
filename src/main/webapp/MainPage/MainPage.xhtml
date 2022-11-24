@@ -7,19 +7,16 @@
     </h:head>
     <h:body>
         <h:outputLabel style="font-size: 30px" value=""/>
-        <img src="images/Logo.png" width="120"/>
-        <br/>
+        <img src="images/Logo.png" width="120"/> 
         <br/>
         <h:form>
-            <h:panelGrid columns="1">
+            <h:panelGrid columns="6">
             <br/>
                 <h:commandButton value="Login" action="LoginPage.xhtml?faces-redirect=true"/>
             <br/>
-                <h:link value="Create a New User Account" outcome="CreateUser.xhtml?faces-redirect=true" />
+                <h:commandButton value="Register" action="CreateUser.xhtml?faces-redirect=true" />
             <br/>    
-                <h:link value="See Rooms in the Hotel" outcome="SeeRooms.xhtml?faces-redirect=true" />
-            <br/>
-                <h:commandButton value="See Rooms in the Hotel" action="SeeRooms.xhtml?faces-redirect=true"/>
+                <h:commandButton value="Rooms" action="SeeRooms.xhtml?faces-redirect=true"/>
             </h:panelGrid>
         </h:form>
         <img src="images/Main.jpeg" width="900"/>
