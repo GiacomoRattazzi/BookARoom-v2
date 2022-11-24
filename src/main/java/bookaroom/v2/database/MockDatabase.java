@@ -31,16 +31,16 @@ public class MockDatabase {
     private HashMap<String, ArrayList<LocalDate>> bookedDates = new HashMap<String, ArrayList<LocalDate>>();
     private ArrayList<LocalDate> test = new ArrayList<LocalDate>();
     private ArrayList<LocalDate> test2 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix = new ArrayList<LocalDate>();
     private MockDatabase() {
  
         
- 
+        nullFix.add(LocalDate.of(0000,01,01));
         
         test.add(LocalDate.of(2022,12,11));
         test.add(LocalDate.of(2023,12,11));
         test.add(LocalDate.of(2024,12,11));
-        bookedDates.put("Room 1", test);
-       
+        bookedDates.put("Room 1", nullFix);
         test2.add(LocalDate.of(2026,12,11));
         test2.add(LocalDate.of(2027,12,11));
         test2.add(LocalDate.of(2028,12,11));
@@ -232,7 +232,12 @@ public class MockDatabase {
     public HashMap<String, ArrayList<LocalDate>> getBookedDates() {
         return bookedDates;
     }
-        
+    
+    public void setDates(List<LocalDate> dates, String roomName) {
+        for (LocalDate d : dates) {
+                bookedDates.get("Room 1").add(d);
+        }
+    }
 
 }
 

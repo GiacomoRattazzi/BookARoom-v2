@@ -41,7 +41,7 @@ public class TestBean implements Serializable {
     private Boolean roomEmpty = true;
     private String temp1;
     private String temp2;
-
+    private List<LocalDate> aa;
     
     public void click() {
         if (roomEmpty == false) {
@@ -67,7 +67,6 @@ public class TestBean implements Serializable {
         return temp2;
     }
     
-    
     public void dateFor() {
         roomEmpty = true;
         for (LocalDate tempBooked : getDatesBetween()) {
@@ -90,7 +89,12 @@ public class TestBean implements Serializable {
             }}
         
     }
-       
+    
+    public void addDatesBooked() {
+        MockDatabase.getInstance().setDates(getDatesBetween(), "Room 1");
+        
+    }
+  
     public List<LocalDate> getRange() {
         return range;
     }
@@ -102,6 +106,7 @@ public class TestBean implements Serializable {
     public LocalDate getToday() {
         return LocalDate.now();
     }
+    
 
     public List<LocalDate> getDatesBetween() { 
         if(range == null) {
@@ -111,7 +116,8 @@ public class TestBean implements Serializable {
             return IntStream.iterate(0, i -> i + 1)
               .limit(numOfDaysBetween)
               .mapToObj(i -> range.get(0).plusDays(i))
-              .collect(Collectors.toList()); 
+              .collect(Collectors.toList());
+                
         }
     }
     
