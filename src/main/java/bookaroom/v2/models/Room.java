@@ -65,7 +65,13 @@ public class Room {
         }
         return false;
     }
-
+    
+    
+    public String getPrint() {
+        return  name + "       "
+                + "Price: " + price +".-" + "       "
+                + "Description: " + Arrays.toString(description.toArray());
+                }
     @Override
     public String toString() {
         return "Room{"

@@ -67,6 +67,8 @@ public class TestBean implements Serializable {
         return temp2;
     }
     
+    
+    
     public void dateFor() {
         roomEmpty = true;
         for (LocalDate tempBooked : getDatesBetween()) {
