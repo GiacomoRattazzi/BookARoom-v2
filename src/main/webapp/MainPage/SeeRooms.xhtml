@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Hotel Rooms</title>
     </h:head>
@@ -29,6 +30,17 @@
              </p:tab>
              </p:accordionPanel>
             
+            <h:outputText value="Reviews" style="font-size: 30px"/>
+                <br/>
+                <ui:repeat value="#{commentBean.comments}" var="item">
+                    <h:outputText value="-----" />
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{item.comment}" />
+                        <p:rating value="#{ratingView.rating}" readonly="true" />
+                    </h:panelGrid>
+                    <h:outputText value="-----" />
+                </ui:repeat>
+                <br/>    
         </h:form>
     </h:body>
 </html>
