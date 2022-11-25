@@ -41,6 +41,7 @@ public class MockDatabase {
     private ArrayList<LocalDate> nullFix8 = new ArrayList<LocalDate>();
     private ArrayList<LocalDate> nullFix9 = new ArrayList<LocalDate>();
     private ArrayList<LocalDate> nullFix10 = new ArrayList<LocalDate>();
+    private ArrayList<LocalDate> nullFix11 = new ArrayList<LocalDate>();
     
     private MockDatabase() {
  
@@ -63,6 +64,7 @@ public class MockDatabase {
         bookedDates.put("Room 8", nullFix8);
         bookedDates.put("Room 9", nullFix9);
         bookedDates.put("Room 10", nullFix10);
+        
         
     
         users.add(new User("jwang", "jingmin", "wang", "jingmin.wang@unil.ch", "1234","0000000000000000","123",new Date(2026,10,01)));
@@ -244,6 +246,16 @@ public class MockDatabase {
         for (LocalDate d : dates) {
                 bookedDates.get(roomName).add(d);
         }
+    }
+    
+    public void removeDates(List<LocalDate> dates, String roomName) {
+        for (LocalDate d : dates) {
+                bookedDates.get(roomName).remove(bookedDates.get(roomName).indexOf(d));
+        }
+    }
+    
+    public void testRemove() {
+        bookedDates.put("Room 11", nullFix10);
     }
 
 }

@@ -45,7 +45,9 @@ public class RoomBean implements Serializable{
     
     private int resNbr = 0;
     private int RemoveResNbr = 0;
-    
+    private String DelRoomName = "";
+    private List<LocalDate> DelDates = null;
+    private List<LocalDate> DelDatesRange = null;
 
 
     public void addDatesToBooking() {
@@ -245,8 +247,7 @@ public class RoomBean implements Serializable{
     }
     
     public void addDatesBooked() {
-        MockDatabase.getInstance().setDates(getDatesBetween(), roomName);
-        
+        MockDatabase.getInstance().setDates(getDatesBetween(), roomName);   
     }
   
     public List<LocalDate> getRange() {
@@ -337,11 +338,27 @@ public class RoomBean implements Serializable{
         RemoveResNbr = Rnbr;
     }
     
+    public String getDelRoomName(){
+        return DelRoomName;
+    }
+    
+    public void setDelRoomName(String delR) {
+        DelRoomName = delR;
+    }
+    
+    
+    public void removeDatesBooked() {
+        MockDatabase.getInstance().removeDates(getDatesBetween(), roomName);   
+    }
+    
     public void removeRoomFromBooking() {
         User user = LoginBean.getUserLoggedIn();
         try {
             if (doesRoomExistInBooking(user, RemoveResNbr)) {
                 user.getBooking().removeReservation(findResByNumberInBooking(user, RemoveResNbr));
+                setResDatesByNumberInBooking(user, RemoveResNbr);
+                MockDatabase.getInstance().removeDates(getRangeFromBooking(), findResNameByNumberInBooking(user, RemoveResNbr));
+                
             }
         } catch (DoesNotExistException ex) {
             System.out.println(ex.getMessage());
@@ -368,6 +385,47 @@ public class RoomBean implements Serializable{
         throw new DoesNotExistException("Reservation " + resnbr + " does not exist.");
     }
     
+    private String findResNameByNumberInBooking(User user, int resnbr) throws DoesNotExistException {
+        for (Reservation r : user.getBooking().getReservations()) {
+            if (r.getNumber() == resnbr) {
+                return r.getName();
+            }
+        }
+        throw new DoesNotExistException("Reservation " + resnbr + " does not exist.");
+    }
+    
+    private void setResDatesByNumberInBooking(User user, int resnbr) throws DoesNotExistException {
+        for (Reservation r : user.getBooking().getReservations()) {
+            if (r.getNumber() == resnbr) {
+                DelDates = r.getRange();
+            }
+        }
+        throw new DoesNotExistException("Reservation " + resnbr + " does not exist.");
+    }
+    
+    private List<LocalDate> getRangeFromBooking(){
+            if(DelDates == null) {
+            return null;
+        } else {
+            long numOfDaysBetween = ChronoUnit.DAYS.between(DelDates.get(0), DelDates.get(1)); 
+            return IntStream.iterate(0, i -> i + 1)
+              .limit(numOfDaysBetween)
+              .mapToObj(i -> DelDates.get(0).plusDays(i))
+              .collect(Collectors.toList());
+                
+        }
+    }
+    
+    public void deleteDatesBooked(List<LocalDate> list) {
+        MockDatabase.getInstance().removeDates(getDatesBetween(), roomName);   
+    }
+    
+    public void testingremove(String roomName){
+        MockDatabase.getInstance().testRemove();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Help"));
+    }
+            
+            
     //Maybe not needed 
     /*
     public void setToday(LocalDate today) {
