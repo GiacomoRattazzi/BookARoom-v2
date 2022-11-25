@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import org.primefaces.component.rating.Rating;
 
 /*
  * @author Team BookARoom
@@ -25,6 +26,7 @@ public class CommentBean implements Serializable{
     private LocalDateTime now = LocalDateTime.now();
     private DateTimeFormatter formatterComment = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
+    private Integer rating;
 
     public ArrayList<Comment> getComments() {
         return MockDatabase.getInstance().getComments();
@@ -45,10 +47,17 @@ public class CommentBean implements Serializable{
 
     public void addCommentFromUser() {
         User user = LoginBean.getUserLoggedIn();
-        MockDatabase.getInstance().addAComment(new Comment(user.getUsername()+": "+comment+" ("+getTodayDate().format(formatterComment)+")"));
+        MockDatabase.getInstance().addAComment(new Comment(user.getUsername()+": "+comment+" ("+getTodayDate().format(formatterComment)+")",rating));
         
 
     }
     
- 
+    public Integer getRating(){
+        return rating;
+    }
+    
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
 }

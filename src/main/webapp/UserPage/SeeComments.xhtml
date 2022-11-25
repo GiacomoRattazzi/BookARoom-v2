@@ -10,25 +10,24 @@
     <h:body>
         <h:form>
             <h:panelGrid columns="2">
-                <h:outputText value="Reviews" style="font-size: 30px"/>
+                <h:outputText value="Reviews" style="font-size: 20px"/>
                 <br/>
                 <ui:repeat value="#{commentBean.comments}" var="item">
                     <h:outputText value="-----" />
                     <h:panelGrid columns="2">
                         <h:outputText value="#{item.comment}" />
-                        <p:rating value="#{ratingView.rating}" readonly="true" />
+                        <p:rating value="#{item.rating}" readonly="true" />
                     </h:panelGrid>
                     <h:outputText value="-----" />
                 </ui:repeat>
                 <br/>
                 <h:outputText value="New Comment"/>
                 <h:inputText value="#{commentBean.comment}" />
-                <p:rating value="#{ratingView.rating}" />
+                <p:rating value="#{commentBean.rating}" />
                 <br/>
-                <h:commandButton value="Add the comment" action="#{commentBean.addCommentFromUser()}"/>
-                <!--click "Add the comment" button, two actions: 1. add comment to user, 2. add rating to user-->
+                <h:commandButton value="Add the comment:" action="#{commentBean.addCommentFromUser()}"/>
                 <br/>
-                <h:commandButton value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
+                <h:commandButton value="Back" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
             </h:panelGrid>
         </h:form>
     </h:body>
