@@ -44,6 +44,7 @@ public class RoomBean implements Serializable{
     private String temp2;
     
     private int resNbr = 0;
+    private int RemoveResNbr = 0;
     
 
 
@@ -86,7 +87,7 @@ public class RoomBean implements Serializable{
         }
         return false;
     }
-  
+  /*
     public void removeRoomFromBooking() {
         User user = LoginBean.getUserLoggedIn();
         try {
@@ -98,9 +99,10 @@ public class RoomBean implements Serializable{
         }
         // empty values
         this.roomName = "";
-    }
+    }*/
     
 // TODO put this in form of an exception
+    /*
     private boolean doesRoomExistInBooking(User user, String roonName) {
         for (Room r : user.getBooking().getRooms()) {
             if (r.getName().equals(roomName)) {
@@ -108,7 +110,7 @@ public class RoomBean implements Serializable{
             }
         }
         return false;
-    }
+    }*/
 
     private Room findRoomByNameInTheHotel(String roomName) throws DoesNotExistException {
         for (Room r : MockDatabase.getInstance().getRooms()) {
@@ -327,7 +329,44 @@ public class RoomBean implements Serializable{
         
     }
     
-
+    public int getResNbr(){
+        return RemoveResNbr;
+    }
+    
+    public void setResNbr(int Rnbr) {
+        RemoveResNbr = Rnbr;
+    }
+    
+    public void removeRoomFromBooking() {
+        User user = LoginBean.getUserLoggedIn();
+        try {
+            if (doesRoomExistInBooking(user, RemoveResNbr)) {
+                user.getBooking().removeReservation(findResByNumberInBooking(user, RemoveResNbr));
+            }
+        } catch (DoesNotExistException ex) {
+            System.out.println(ex.getMessage());
+        }
+        // empty values
+        this.RemoveResNbr = 0;
+    }
+    
+    private boolean doesRoomExistInBooking(User user, int resnbr) {
+        for (Reservation r : user.getBooking().getReservations()) {
+            if (r.getNumber() == resnbr) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private Reservation findResByNumberInBooking(User user, int resnbr) throws DoesNotExistException {
+        for (Reservation r : user.getBooking().getReservations()) {
+            if (r.getNumber() == resnbr) {
+                return r;
+            }
+        }
+        throw new DoesNotExistException("Reservation " + resnbr + " does not exist.");
+    }
     
     //Maybe not needed 
     /*

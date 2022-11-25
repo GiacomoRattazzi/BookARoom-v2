@@ -25,6 +25,13 @@
                     </h:panelGrid>
                     <h:outputText value="-----" />
                 </ui:repeat>
+                <br/>
+                <h:outputText value="Reservation number: "/>
+                <h:inputText value="#{roomBean.resNbr}" />
+                <br/>
+                <h:commandButton value="Remove reservation" action="#{roomBean.removeRoomFromBooking}"/> 
+                <br/>
+                <h:commandButton value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
             </h:panelGrid>
         </h:form>
     </h:body>
