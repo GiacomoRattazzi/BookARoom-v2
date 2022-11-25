@@ -12,7 +12,7 @@
         }
     </style>
     <h:head>
-        <title>BookARoom</title>
+        <title>Booking a room</title>
     </h:head>
     <h:form id="form">
         <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
@@ -23,25 +23,13 @@
             
             <p:outputLabel for="range" value="Range Selection:" />
             <p:datePicker id="range" selectionMode="range" value="#{roomBean.range}" readonlyInput="true" showIcon="true" mindate="#{roomBean.today}"/>
-<!--            <h:outputText value="test:"/>
-            <h:outputText value="#{roomBean.range}"/>
-            <h:outputText value="test:"/>
-            <h:outputText value="#{roomBean.datesBetween}"/>
-            <h:outputText value="roomEmpty:"/>
-            <h:outputText value="#{roomBean.result}"/>
-            <h:outputText value="dateschecking:"/>
-            <h:outputText value="#{roomBean.result2}"/>
-            <h:outputText value="datesBooked:"/>
-            <h:outputText value="#{roomBean.result3}"/>
-            <h:outputText value="datesBooked:"/>
-            <h:outputText value="#{roomBean.bookedDates}"/>-->
+
             <h:outputText value="You are booking:"/>
             <h:outputText value="#{roomBean.roomName}"/>
-            <h:outputText value="total price:"/>
-            <h:outputText value="#{roomBean.totalPrice}"/>
-            
+            <h:outputText value="datesBooked:"/>
+            <h:outputText value="#{roomBean.bookedDates.get(roomBean.roomName)}"/>
+
         </h:panelGrid>
-       
         <p:commandButton value="Submit the dates" update="msgs" action="#{roomBean.finish}" icon="pi pi-check" />
     
         <p:dialog modal="true" resizable="false" header="You have booked #{roomBean.roomName}" widgetVar="dlg" showEffect="fold">
@@ -57,7 +45,7 @@
                 <h:outputText value="Total Price:" />
                 <h:outputText value="#{roomBean.totalPrice}">
                 </h:outputText>
-                <p:commandButton value="See the rooms booked" action="/UserPage/SeeBooking.xhtml?faces-redirect=true" icon="pi pi-check" />
+                <p:commandButton value="See the rooms that you booked" action="/UserPage/SeeBooking.xhtml?faces-redirect=true" icon="pi pi-check" />
  
             </p:panelGrid>
         </p:dialog>
