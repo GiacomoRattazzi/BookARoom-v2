@@ -424,7 +424,8 @@ public class RoomBean implements Serializable{
         MockDatabase.getInstance().testRemove();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Help"));
     }
-            
+    
+     
             
     //Maybe not needed 
     /*
