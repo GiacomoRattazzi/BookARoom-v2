@@ -22,9 +22,9 @@
                 <h:inputText value="#{userBean.email}" />
                 <h:outputText value="Password"/>
                 <h:inputSecret value="#{userBean.password}" />
-                <h:outputText value="Credit card number"/>
+                <h:outputText value="Credit card number (must be 16 digits)"/>
                 <input value="#{userBean.CCnumber}" minlength="16" maxlength="16" size="20" pattern="[0-9]{16}"/>
-                <h:outputText value="Credit card code"/>
+                <h:outputText value="Credit card code (must be 3 digits)"/>
                 <input value="#{userBean.CCcode}" minlength="3" maxlength="3" size="10" pattern="[0-9]{3}" oninvalid="this.setCustomValidity('Credit card code should be a 3-digit number')"/>
                 
                 <h:outputText value="Credit card expiration date"/>
