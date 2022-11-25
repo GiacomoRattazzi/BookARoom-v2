@@ -11,19 +11,20 @@
         <h:outputLabel style="font-size: 30px" value="User page"/>
         <br/>
         <h:form>
-            <h:panelGrid columns="1" cellpadding="2" style="color: white;  ;
+            <h:panelGrid columns="1" cellpadding="10" style="color: white; background-image: url(../images/Main.jpeg); 
+                         ; background-position:  center ;
                                  border-radius: 2px;cursor: pointer; display: block ; text-align: center">
-                
+                <b></b>
                 <p:commandButton value="User Information" action="ShowInfo.xhtml?faces-redirect=true"  />
                 <p:commandButton value="Book a Room" action="SeeRoomsUser.xhtml?faces-redirect=true" />
                 <p:commandButton value="Bookings" action="SeeBooking.xhtml?faces-redirect=true" />
                 <p:commandButton value="Hotel Reviews" action="SeeComments.xhtml?faces-redirect=true" />
                 <p:commandButton value="Log out" action="#{loginBean.userLogsout()}"/>
-                
+                <b></b>
         </h:panelGrid>  
         </h:form>
         
-        <img src="../images/Main.jpeg" width="900" alt="Hotel picture"/>
+        
     </h:body>
 </html>
 
