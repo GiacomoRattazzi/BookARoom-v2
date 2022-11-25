@@ -33,6 +33,7 @@ public class RoomBean implements Serializable{
     private HashMap<String, List<LocalDate>> Map;
     
     
+    private double totalPrice = 0;
     private List<LocalDate> range = null;
     private List<LocalDate> betweenRange;
     private Boolean boo =true;
@@ -268,9 +269,33 @@ public class RoomBean implements Serializable{
                 
         }
     }
+   
     
     public void setDatesBetween(List<LocalDate> datesBetween) {
         this.betweenRange = betweenRange;
+    }
+    
+    //NEW PRICE
+    private double findRoomPrice() {
+        for (Room r : MockDatabase.getInstance().getRooms()) {
+            if (r.getName().equals(roomName)) {
+                return r.getPrice();
+            }
+        }return 0;
+         }
+    
+    public double getTotalPrice() {
+        if (range!=null){
+            long diffDays = ChronoUnit.DAYS.between(range.get(0), range.get(1));
+            totalPrice = findRoomPrice()*diffDays;
+                return totalPrice;
+        }else{
+            return 0;
+        }
+    }
+    
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
     
     public void finish() {
@@ -283,8 +308,6 @@ public class RoomBean implements Serializable{
             PrimeFaces.current().ajax().update("form:display");
             PrimeFaces.current().executeScript("PF('dlg').show()");
             addTotalToBooking();
-            
-        
         }
         }
     

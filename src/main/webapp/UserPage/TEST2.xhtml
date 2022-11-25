@@ -35,6 +35,8 @@
             <h:outputText value="#{roomBean.bookedDates}"/>
             <h:outputText value="You are booking:"/>
             <h:outputText value="#{roomBean.roomName}"/>
+            <h:outputText value="total price:"/>
+            <h:outputText value="#{roomBean.totalPrice}"/>
             
 
         </h:panelGrid>
@@ -47,7 +49,7 @@
      
             
         <p:dialog modal="true" resizable="false" header="You have booked #{roomBean.roomName}" widgetVar="dlg" showEffect="fold">
-            <p:panelGrid id="display" columns="4" columnClasses="label,value,label,value">
+            <p:panelGrid id="display" columns="2" columnClasses="label,value,label,value">
                 
                 <h:outputText value="Dates" />
                 <ui:repeat var="date" value="#{roomBean.range}" varStatus="status" size="#{roomBean.range.size()}">
@@ -56,6 +58,9 @@
                         <f:convertDateTime pattern="MM/dd/yyyy" type="localDate"/>
                     </h:outputText>
                 </ui:repeat>
+                <h:outputText value="Total Price:" />
+                <h:outputText value="#{roomBean.totalPrice}">
+                </h:outputText>
  
             </p:panelGrid>
         </p:dialog>
