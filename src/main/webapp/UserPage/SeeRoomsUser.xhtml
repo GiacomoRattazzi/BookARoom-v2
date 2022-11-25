@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Hotel Rooms</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputText value="Rooms in the Hotel" style="font-size: 30px"/>
+
+           
+            <p:accordionPanel value="#{roomBean.rooms}" var="room" widgetVar="ondemand" onTabChange="">
+                
+                <p:tab title="#{room.name}" >
+
+                    <h:panelGrid columns="1" cellpadding="10">
+                <p:graphicImage name="/images/#{room.name}"/> 
+                <img src="../images/#{room.name}.jpeg" width="500" alt="Picture :#{room.name}"/>
+                <h:outputText value="The Price per night : #{room.price} CHF"/>
+                    
+               
+                <h:outputText value="The Description : #{room.description}" />
+                </h:panelGrid>
+                  
+            </p:tab>
+            </p:accordionPanel>
+            
+            
+            
+            
+            <p:selectOneListbox id="roomBook" value="#{roomBean.roomName}" >
+                    <f:ajax/>
+                    <f:selectItems value="#{roomBean.rooms}" var="room" 
+                                   itemLabel="#{room.name}   Price (per night) #{room.price} CHF " 
+                                   itemValue="#{room.name}" />
+            </p:selectOneListbox>
+            
+            <h:commandButton value="Book this room" action="/UserPage/TEST2.xhtml?faces-redirect=true"/>         
+            
+            
+            
+<!--            <p:selectOneButton value="#{roomBean.rooms}">
+                <f:selectItem itemLabel="Room 1" itemValue="Room 1"/>
+                <f:selectItem itemLabel="Room 2" itemValue="Room 2"/>
+                <f:selectItem itemLabel="Room 3" itemValue="Room 3"/>
+                <f:selectItem itemLabel="Room 4" itemValue="Room 4"/>
+                <f:selectItem itemLabel="Room 5" itemValue="Room 5"/>
+                <f:selectItem itemLabel="Room 6" itemValue="Room 6"/>
+                <f:selectItem itemLabel="Room 7" itemValue="Room 7"/>
+                <f:selectItem itemLabel="Room 8" itemValue="Room 8"/>
+                <f:selectItem itemLabel="Room 9" itemValue="Room 9"/>
+                <f:selectItem itemLabel="Room 10" itemValue="Room 10"/>
+                
+                
+                <f:selectItem itemLabel="#{roomBean.roomName}" itemValue="#{roomBean.roomName}"/>
+                <p:ajax update="#{roomBean.roomName}" /> 
+            </p:selectOneButton>-->
+            
+            
+            <br>
+            <h:outputText id="result" value="#{roomBean.roomName}" />
+            </br>
+            
+<!--            <p:selectOneListbox id="ad" value="#{roomBean.roomName}"   var="item"  >
+               <f:selectItems value="#{roomBean.rooms}" var="room" itemLabel="#{room.print}" itemValue="#{room.name}" />
+                <f:ajax/>
+                <p:column>
+                    <img src="images/Logo.png" width="120" alt="Logo"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{item}"/>
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{room}"/>
+                </p:column>
+            </p:selectOneListbox> -->
+        </h:form>
+    </h:body>
+</html>

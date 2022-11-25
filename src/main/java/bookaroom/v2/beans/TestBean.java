@@ -35,20 +35,18 @@ public class TestBean implements Serializable {
  
     private List<LocalDate> range = null;
     private List<LocalDate> betweenRange;
-    //Maybe not needed: private LocalDate today;
     private Boolean boo =true;
     private LocalDate test1;
     private Boolean roomEmpty = true;
     private String temp1;
     private String temp2;
-
     
     public void click() {
         if (roomEmpty == false) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "This date is already booked: " + temp2 ));
-        }   else {
-             PrimeFaces.current().ajax().update("form:display");
-             PrimeFaces.current().executeScript("PF('dlg').show()");
+        }else {
+            PrimeFaces.current().ajax().update("form:display");
+            PrimeFaces.current().executeScript("PF('dlg').show()");
         }
     }
  
@@ -66,6 +64,7 @@ public class TestBean implements Serializable {
     public String getResult3(){
         return temp2;
     }
+    
     
     
     public void dateFor() {
@@ -90,7 +89,12 @@ public class TestBean implements Serializable {
             }}
         
     }
-       
+    
+    public void addDatesBooked() {
+        MockDatabase.getInstance().setDates(getDatesBetween(), "Room 1");
+        
+    }
+  
     public List<LocalDate> getRange() {
         return range;
     }
@@ -102,6 +106,7 @@ public class TestBean implements Serializable {
     public LocalDate getToday() {
         return LocalDate.now();
     }
+    
 
     public List<LocalDate> getDatesBetween() { 
         if(range == null) {
@@ -111,7 +116,8 @@ public class TestBean implements Serializable {
             return IntStream.iterate(0, i -> i + 1)
               .limit(numOfDaysBetween)
               .mapToObj(i -> range.get(0).plusDays(i))
-              .collect(Collectors.toList()); 
+              .collect(Collectors.toList());
+                
         }
     }
     
@@ -119,7 +125,20 @@ public class TestBean implements Serializable {
         this.betweenRange = betweenRange;
     }
     
-
+    public void finish() {
+        dateFor(); 
+        if (roomEmpty==false) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "This date is already booked: " + temp2 ));
+        }else{
+            addDatesBooked();
+            
+            PrimeFaces.current().ajax().update("form:display");
+            PrimeFaces.current().executeScript("PF('dlg').show()");
+        
+        
+        }
+        }
+    
 
     
     //Maybe not needed 
