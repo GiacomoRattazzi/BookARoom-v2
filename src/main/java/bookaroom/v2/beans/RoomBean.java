@@ -48,6 +48,7 @@ public class RoomBean implements Serializable{
     private String DelRoomName = "";
     private List<LocalDate> DelDates = null;
     private List<LocalDate> DelDatesRange = null;
+    
 
 
     public void addDatesToBooking() {
@@ -208,6 +209,14 @@ public class RoomBean implements Serializable{
  
     public HashMap<String, ArrayList<LocalDate>> getBookedDates() {
         return MockDatabase.getInstance().getBookedDates();
+    }
+    
+    public ArrayList<String> getBookedDatesString(){
+        ArrayList<String> temp = new ArrayList<String>();
+        for (LocalDate x : MockDatabase.getInstance().getBookedDates().get(roomName)){
+            temp.add(x.toString());
+        }
+        return temp;
     }
     
     public String getResult(){

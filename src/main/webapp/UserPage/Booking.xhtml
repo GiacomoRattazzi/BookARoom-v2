@@ -11,10 +11,10 @@
             font-weight: bold;
         }
     </style>
-    <script type="text/javascript">
+<!--    <script type="text/javascript">
         //<![CDATA[
         function highlightDays(date) {
-            var dates = "#{roomBean.today}";
+            var dates = "#{roomBean.bookedDatesString}";
             var cssclass = '';
             for (var i = 0; i < dates.length; i++) {
                 if (date === new Date(dates[i])) {
@@ -24,7 +24,7 @@
             return [true, cssclass];
         }
         //]]>
-    </script>
+    </script>-->
     <h:head>
         <title>Booking a room</title>
     </h:head>
@@ -32,20 +32,20 @@
     <h:form id="form">
         <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
         <h:commandButton value="Go Back to Main Menu" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
-        <h:commandButton value="Go Back to see the Rooms" action="/UserPage/SeeRoomsUser.xhtml?faces-redirect=true"/>
+        <h:commandButton value="Go Back to Room selection" action="/UserPage/SeeRoomsUser.xhtml?faces-redirect=true"/>
 
         <h:panelGrid columns="1" cellpadding="5">
             
-            <p:outputLabel for="range" value="Range Selection:" />
-            <p:datePicker id="range" selectionMode="range" value="#{roomBean.range}" readonlyInput="true" showIcon="true" mindate="#{roomBean.today}" disabledDates="#{roomBean.bookedDates.get(roomBean.roomName)}"/>
+            <p:outputLabel for="range" value="Pick the dates of your stay:" />
+            <p:datePicker id="range" selectionMode="range" value="#{roomBean.range}" readonlyInput="true" showIcon="true" mindate="#{roomBean.today}"/>
             
             <h:outputText value="You are booking:"/>
             <h:outputText value="#{roomBean.roomName}"/>
-            <h:outputText value="datesBooked:"/>
+            <h:outputText value="This room is not available at the following dates:"/>
             <h:outputText value="#{roomBean.bookedDates.get(roomBean.roomName)}"/>
 
         </h:panelGrid>
-        <p:commandButton value="Submit the dates" update="msgs" action="#{roomBean.finish}" icon="pi pi-check" />
+        <p:commandButton value="Confirm booking" update="msgs" action="#{roomBean.finish}" icon="pi pi-check" />
     
         <p:dialog modal="true" resizable="false" header="You have booked #{roomBean.roomName}" widgetVar="dlg" showEffect="fold">
             <p:panelGrid id="display" columns="2" columnClasses="label,value,label,value">
