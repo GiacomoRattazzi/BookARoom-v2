@@ -16,6 +16,9 @@
                 <h:outputText value="#{loginBean.currentUser.lastName}"/>
                 <h:outputText value="Email:"/>
                 <h:outputText value="#{loginBean.currentUser.email}"/>
+                <h:outputText value="Credit card number"/>
+                <h:outputText value="#{loginBean.currentUser.CCexpirationdate}"/>
+                
                 
                 <br/>
                 <h:commandButton value="Change user information" action="ChangeInfo.xhtml?faces-redirect=true"/>
