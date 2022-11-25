@@ -21,11 +21,11 @@
                     <h:outputText value="-----" />
                 </ui:repeat>
                 <br/>
-                <h:outputText value="New Comment"/>
+                <h:outputText value="New Comment:"/>
                 <h:inputText value="#{commentBean.comment}" />
                 <p:rating value="#{commentBean.rating}" />
                 <br/>
-                <h:commandButton value="Add the comment:" action="#{commentBean.addCommentFromUser()}"/>
+                <h:commandButton value="Add comment" action="#{commentBean.addCommentFromUser()}"/>
                 <br/>
                 <h:commandButton value="Back" action="/UserPage/UserMainPage.xhtml?faces-redirect=true"/>
             </h:panelGrid>
