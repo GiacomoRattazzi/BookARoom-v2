@@ -6,13 +6,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+
 /**
  * Software Architectures | DOPLab | UniL
  *
  * @author Team BookARoom
  */
-
-
 
 public class Booking {
 
@@ -25,7 +24,30 @@ public class Booking {
     
     //test total
     private ArrayList<String> total;
+    
+    
+    
+    
+    //TEST OTHER 
+    private ArrayList<Reservation> reservations;
+    public Booking() {
+        this.reservations = new ArrayList<>();
+    }
+    
+    public void addReservation(Reservation reservation) {
+        reservations.add(reservation);
+        
+    }
 
+    public void removeReservation(Reservation reservation) {
+        reservations.remove(reservation);
+    }
+    
+    public ArrayList<Reservation> getReservations() {
+        return reservations;
+    }
+    
+    /*
     public Booking() {
         this.rooms = new ArrayList<>();
         this.datesbookedLists = new ArrayList<>();
@@ -34,7 +56,7 @@ public class Booking {
         this.total = new ArrayList<>();
         
         //BCDelete: this.balance = 0.0;
-    }
+    }*/
     
     //test total
     public void addTotal(String roomName, String dates) {

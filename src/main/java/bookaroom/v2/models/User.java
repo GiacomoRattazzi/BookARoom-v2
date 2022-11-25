@@ -30,6 +30,7 @@ public class User {
         this.CCcode = CCcode.hashCode();
         this.CCexpirationdate = CCexpirationdate;
         this.booking = new Booking();
+        
     }
     
     public void resetFirstName(String firstName) {

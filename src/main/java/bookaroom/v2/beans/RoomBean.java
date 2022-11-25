@@ -3,6 +3,7 @@ package bookaroom.v2.beans;
 import bookaroom.v2.exceptions.DoesNotExistException;
 import bookaroom.v2.models.Room;
 import bookaroom.v2.database.MockDatabase;
+import bookaroom.v2.models.Reservation;
 import bookaroom.v2.models.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,6 +42,8 @@ public class RoomBean implements Serializable{
     private Boolean roomEmpty = true;
     private String temp1;
     private String temp2;
+    
+    private int resNbr = 0;
     
 
 
@@ -299,17 +302,30 @@ public class RoomBean implements Serializable{
     }
     
     public void finish() {
+        
         dateFor(); 
         if (roomEmpty==false) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "This date is already booked: " + temp2 ));
         }else{
+            
             addDatesBooked();
+            resNbr += 1;
+            addResToRes();
             
             PrimeFaces.current().ajax().update("form:display");
             PrimeFaces.current().executeScript("PF('dlg').show()");
-            addTotalToBooking();
+            
         }
         }
+    //TEST OTHER
+   
+    
+    public void addResToRes() {
+        User user = LoginBean.getUserLoggedIn();
+        Reservation r = new Reservation(resNbr, roomName, getTotalPrice(), range);
+        user.getBooking().addReservation(r);
+        
+    }
     
 
     

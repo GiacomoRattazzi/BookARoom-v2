@@ -61,6 +61,7 @@
                 <h:outputText value="Total Price:" />
                 <h:outputText value="#{roomBean.totalPrice}">
                 </h:outputText>
+                <p:commandButton value="Submit" update="msgs" action="#{roomBean.addResToRes}" icon="pi pi-check" />
  
             </p:panelGrid>
         </p:dialog>
