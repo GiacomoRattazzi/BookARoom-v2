@@ -364,9 +364,10 @@ public class RoomBean implements Serializable{
         User user = LoginBean.getUserLoggedIn();
         try {
             if (doesRoomExistInBooking(user, RemoveResNbr)) {
-                user.getBooking().removeReservation(findResByNumberInBooking(user, RemoveResNbr));
                 setResDatesByNumberInBooking(user, RemoveResNbr);
                 MockDatabase.getInstance().removeDates(getRangeFromBooking(), findResNameByNumberInBooking(user, RemoveResNbr));
+                user.getBooking().removeReservation(findResByNumberInBooking(user, RemoveResNbr));
+                
                 
             }
         } catch (DoesNotExistException ex) {
@@ -402,11 +403,13 @@ public class RoomBean implements Serializable{
         }
         throw new DoesNotExistException("Reservation " + resnbr + " does not exist.");
     }
-    
+    private int tempi = 0;
     private void setResDatesByNumberInBooking(User user, int resnbr) throws DoesNotExistException {
         for (Reservation r : user.getBooking().getReservations()) {
-            if (r.getNumber() == resnbr) {
-                DelDates = r.getRange();
+            int tempi = r.getNumber();
+            if (tempi == resnbr) {
+                DelDates = r.getRR();
+               
             }
         }
         throw new DoesNotExistException("Reservation " + resnbr + " does not exist.");
@@ -431,7 +434,6 @@ public class RoomBean implements Serializable{
     
     public void testingremove(String roomName){
         MockDatabase.getInstance().testRemove();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Help"));
     }
     
      

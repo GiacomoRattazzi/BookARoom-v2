@@ -37,7 +37,7 @@
         <h:panelGrid columns="1" cellpadding="5">
             
             <p:outputLabel for="range" value="Pick the dates of your stay:" />
-            <p:datePicker id="range" selectionMode="range" value="#{roomBean.range}" readonlyInput="true" showIcon="true" mindate="#{roomBean.today}"/>
+            <p:datePicker id="range" selectionMode="range" value="#{roomBean.range}" readonlyInput="true" showIcon="true" mindate="#{roomBean.today}" />
             
             <h:outputText value="You are booking:"/>
             <h:outputText value="#{roomBean.roomName}"/>

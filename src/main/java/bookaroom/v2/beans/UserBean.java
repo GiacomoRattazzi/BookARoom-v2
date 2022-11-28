@@ -83,30 +83,7 @@ public class UserBean implements Serializable {
         return false;
     }
     
-    /*private boolean ccNumberCorrect() throws InvalidCreditCardException {
-        for (User user : MockDatabase.getInstance().getUsers()) {
-            if (user.getCCnumber() !=16) {
-                throw new InvalidCreditCardException("this shit wrong");
-            }
-        }
-        return false;
-    }
-    */
-    
-    /*private boolean ExpiredCC() throws InvalidCreditCardDateException {
-        for (User user : MockDatabase.getInstance().getUsers()) {
-            YearMonth userexpdateFormat = YearMonth.parse(user.getCCexpirationdate(), formatter); 
-            boolean expired = CurrentTime.isBefore(userexpdateFormat);
-                    if (expired==true) {
-                        System.out.println("Credit Card is still valid.");
-                    } else {
-                        throw new InvalidCreditCardDateException("Credit Card has expired.");
-                    } 
-        }
-        return false;
-    }
-    */ 
-    
+
     public String getEmail() {
         return email;
     }

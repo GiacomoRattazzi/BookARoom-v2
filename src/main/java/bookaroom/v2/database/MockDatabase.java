@@ -79,16 +79,11 @@ public class MockDatabase {
                 add("One double bed");
                 add("Maximum capacity: 1"); 
             }
-        }, new ArrayList<> (Arrays.asList())
-        ));
+        }));
         rooms.add(new Room("Room 2", 250, new ArrayList<String>() {
             {
                 add("Two double beds");
                 add("Maximum capacity: 2");
-            }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
             }
         }));
         rooms.add(new Room("Room 3", 280, new ArrayList<String>() {
@@ -96,19 +91,11 @@ public class MockDatabase {
                 add("2 beds");
                 add("Maximum capacity: 4");
             }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
-            }
         }));
         rooms.add(new Room("Room 4", 200, new ArrayList<String>() {
             {
                 add("1 bed");
                 add("Maximum capacity: 1");
-            }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
             }
         }));
 
@@ -117,10 +104,6 @@ public class MockDatabase {
                 add("2 beds");
                 add("Maximum capacity: 2");
             }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
-            }
         }));
 
         rooms.add(new Room("Room 6", 280, new ArrayList<String>() {
@@ -128,19 +111,11 @@ public class MockDatabase {
                 add("2 beds");
                 add("Maximum capacity: 4");
             }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
-            }
         }));
         rooms.add(new Room("Room 7", 200,  new ArrayList<String>() {
             {
                 add("1 bed");
                 add("Maximum capacity: 1");
-            }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
             }
         }));
         rooms.add(new Room("Room 8", 250, new ArrayList<String>() {
@@ -148,29 +123,17 @@ public class MockDatabase {
                 add("2 beds");
                 add("Maximum capacity: 2");
             }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
-            }
         }));
         rooms.add(new Room("Room 9", 280, new ArrayList<String>() {
             {
                 add("2 bunk beds");
                 add("Maximum capacity: 4");
             }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
-            }
         }));
         rooms.add(new Room("Room 10", 200, new ArrayList<String>() {
             {
                 add("1 bed");
                 add("Maximum capacity: 1");
-            }
-        }, new ArrayList<String>() {
-            {
-                add(LocalDate.of(2012,12,11).toString());
             }
         }));
                
@@ -245,7 +208,7 @@ public class MockDatabase {
     }
     
     public void testRemove() {
-        bookedDates.put("Room 11", nullFix10);
+        bookedDates.put("Room 11", nullFix11);
     }
 
 }

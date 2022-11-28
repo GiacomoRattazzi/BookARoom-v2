@@ -12,11 +12,28 @@
     
     </style>
     -->
+    
+    <style>
+    #demo {
+      /* (A1) ALL WE NEED : CSS TRANSITION */
+      transition: background-color 1s;
+
+      /* (A2) COSMETICS */
+      width: 100%;
+      height: 100px;
+      background-color: #eee;
+    }
+
+    /* (A3) BACKGROUND COLOR CHANGE */
+    #demo.swap { background-color: #e00; }
+    </style>
+    
     <h:head>
         <title>BookARoom Hotel</title>
         
     </h:head>
     <h:body>
+        
         <h:outputLabel style="font-size: 30px" value=""/>
         <img src="../images/Logo.png" width="120" alt="Logo"/> 
         <br/><br></br>
@@ -32,6 +49,7 @@
         </h:form>
         <br></br>
         <img src="../images/Main.jpeg" width="900" alt="Hotel picture"/>
+      
     </h:body>
     
 </html>

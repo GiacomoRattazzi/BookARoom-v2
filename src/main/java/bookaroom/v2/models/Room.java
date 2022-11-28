@@ -12,23 +12,16 @@ public class Room {
     private String name;
     private double price;
     private ArrayList<String> description;
-    private ArrayList<String> datesbooked;
 
-    public Room(String name, double price, ArrayList<String> descriptionAll,ArrayList<String> datesbookedList) {
+    public Room(String name, double price, ArrayList<String> descriptionAll) {
         this.name = name;
         this.price = price;
         description = new ArrayList<>();
         description.addAll(descriptionAll);
-        this.datesbooked = new ArrayList<>(); // this is normaly useless because can not be use
-        this.datesbooked.addAll(datesbookedList); // this is normaly useless because can not be use
     }
 
-    public Room(String room_1, int i, ArrayList<String> arrayList) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-   
-// Totally useless ------------------------------------------
+
     public ArrayList<String> getDescription() {
         return description;
     }
@@ -40,10 +33,6 @@ public class Room {
     public double getPrice() {
         return price;
     }    
-    
-    public ArrayList<String> getDates() {
-        return datesbooked;
-    }
 
     public void setPrice(double price) {
         this.price = price;
@@ -53,9 +42,6 @@ public class Room {
         this.name = name;
     }
     
-     public void setDates(ArrayList<String> datesbooked) {
-        this.datesbooked = datesbooked;
-    }
 
     @Override
     public boolean equals(Object obj) {
