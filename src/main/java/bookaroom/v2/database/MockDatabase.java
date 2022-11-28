@@ -78,7 +78,6 @@ public class MockDatabase {
             {
                 add("One double bed");
                 add("Maximum capacity: 1"); 
-                add("r001");
             }
         }, new ArrayList<> (Arrays.asList())
         ));
@@ -86,7 +85,6 @@ public class MockDatabase {
             {
                 add("Two double beds");
                 add("Maximum capacity: 2");
-                add("r002");
             }
         }, new ArrayList<String>() {
             {
@@ -97,7 +95,6 @@ public class MockDatabase {
             {
                 add("2 beds");
                 add("Maximum capacity: 4");
-                add("r003");
             }
         }, new ArrayList<String>() {
             {
@@ -108,7 +105,6 @@ public class MockDatabase {
             {
                 add("1 bed");
                 add("Maximum capacity: 1");
-                add("r004");
             }
         }, new ArrayList<String>() {
             {
@@ -120,7 +116,6 @@ public class MockDatabase {
             {
                 add("2 beds");
                 add("Maximum capacity: 2");
-                add("r005");
             }
         }, new ArrayList<String>() {
             {
@@ -132,7 +127,6 @@ public class MockDatabase {
             {
                 add("2 beds");
                 add("Maximum capacity: 4");
-                add("r006");
             }
         }, new ArrayList<String>() {
             {
@@ -143,7 +137,6 @@ public class MockDatabase {
             {
                 add("1 bed");
                 add("Maximum capacity: 1");
-                add("r007");
             }
         }, new ArrayList<String>() {
             {
@@ -154,7 +147,6 @@ public class MockDatabase {
             {
                 add("2 beds");
                 add("Maximum capacity: 2");
-                add("r008");
             }
         }, new ArrayList<String>() {
             {
@@ -165,7 +157,6 @@ public class MockDatabase {
             {
                 add("2 bunk beds");
                 add("Maximum capacity: 4");
-                add("r009");
             }
         }, new ArrayList<String>() {
             {
@@ -176,7 +167,6 @@ public class MockDatabase {
             {
                 add("1 bed");
                 add("Maximum capacity: 1");
-                add("r010");
             }
         }, new ArrayList<String>() {
             {
