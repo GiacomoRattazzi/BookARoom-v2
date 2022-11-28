@@ -27,7 +27,7 @@ public class Reservation {
         return number;
     }
     
-    public List<LocalDate> getRR() {
+    public List<LocalDate> getRange() {
         return range;
     }
 

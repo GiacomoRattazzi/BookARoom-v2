@@ -50,38 +50,6 @@ public class RoomBean implements Serializable{
     private List<LocalDate> DelDatesRange = null;
     
 
-
-    public void addDatesToBooking() {
-        User user = LoginBean.getUserLoggedIn();
-        user.getBooking().addBookedRoomAndDates(roomName, datesbooked);
-        //empty values
-        //this.roomName = "";
-        }
-
-    public void setRoomDates(String roomanddates) {
-        this.datesbooked = roomanddates;
-    }
-    
-    public void addTotalToBooking() {
-        User user = LoginBean.getUserLoggedIn();
-        user.getBooking().addTotal(roomName.toString(), getDatesBetween().toString());
-    }
-  
-    public void addRoomToBooking() {
-        User user = LoginBean.getUserLoggedIn();
-        try {
-            Room r = findRoomByNameInTheHotel(roomName);
-            //user.getBooking().addRoom(r);
-            //user.getBooking().addBookedRoomAndDates(roomName, getDatesBetween().toString());
-            user.getBooking().addTotal(roomName.toString(), getDatesBetween().toString());
-        } catch (DoesNotExistException ex) {
-            System.out.println(ex.getMessage());
-        }
-        // empty values
-        //this.roomName = "";
-    }
-    
-
     private boolean checkRoomExists() {
         for (Room r : MockDatabase.getInstance().getRooms()) {
             if (r.getName().equals(roomName)) {
@@ -90,30 +58,6 @@ public class RoomBean implements Serializable{
         }
         return false;
     }
-  /*
-    public void removeRoomFromBooking() {
-        User user = LoginBean.getUserLoggedIn();
-        try {
-            if (doesRoomExistInBooking(user, roomName)) {
-                user.getBooking().removeRoom(findRoomByNameInBooking(user, roomName));
-            }
-        } catch (DoesNotExistException ex) {
-            System.out.println(ex.getMessage());
-        }
-        // empty values
-        this.roomName = "";
-    }*/
-    
-// TODO put this in form of an exception
-    /*
-    private boolean doesRoomExistInBooking(User user, String roonName) {
-        for (Room r : user.getBooking().getRooms()) {
-            if (r.getName().equals(roomName)) {
-                return true;
-            }
-        }
-        return false;
-    }*/
 
     private Room findRoomByNameInTheHotel(String roomName) throws DoesNotExistException {
         for (Room r : MockDatabase.getInstance().getRooms()) {
@@ -124,63 +68,20 @@ public class RoomBean implements Serializable{
         throw new DoesNotExistException(roomName + " does not exist.");
     }
 
-    private Room findRoomByNameInBooking(User user, String roomName) throws DoesNotExistException {
-        for (Room r : user.getBooking().getRooms()) {
-            if (r.getName().equals(roomName)) {
-                return r;
-            }
-        }
-        throw new DoesNotExistException("Room " + roomName + " does not exist or is not booked.");
-    }
-
     public ArrayList<Room> getRooms() {
         return MockDatabase.getInstance().getRooms();
     }
     
-     public String getTesting() {
-        return "ah";
-    }
-
-
 
     public String getRoomName() {
         return roomName;
     }
     
-      public String getRoomDayArrival() {
-        return dayArrival;
-    }
-    
-    public String getRoomDayDeparture() {
-        return dayDeparture;
-    }
-    
-    public HashMap<String, List<LocalDate>> getBookRoomAndDates(String BookedRoomName, List<LocalDate> BookedRoomDates) {
-        HashMap<String, List<LocalDate>> Hmap = new HashMap<>();
-        Hmap.put(BookedRoomName,BookedRoomDates);
-        return Hmap;
-    }
-    
-    public void setBookRoomAndDates(HashMap<String, List<LocalDate>> Map) {
-        this.Map = Map;
-    }
-    
+  
     public void setRoomName(String roomName) {
         this.roomName = roomName;
     }
-    
-    public void setRoomDayArrival(String dayArrival) {
-        this.dayArrival = dayArrival;
-    }
-    
-    public void setRoomDayDeparture(String dayDeparture) {
-        this.dayDeparture = dayDeparture;
-    }
-    /*
-    public static void setRoomDayDates(List<LocalDate> datesbooked) {
-        RoomController.datesbooked = datesbooked;
-    }
-*/
+
     
     //GET PRICE
     public double getRoomPriceTest(String roomName) {
@@ -194,7 +95,6 @@ public class RoomBean implements Serializable{
         }
         return p;
     }
-    
     
     //NEW FROM TEST BEAN
     
@@ -360,6 +260,7 @@ public class RoomBean implements Serializable{
         MockDatabase.getInstance().removeDates(getDatesBetween(), roomName);   
     }
     
+    
     public void removeRoomFromBooking() {
         User user = LoginBean.getUserLoggedIn();
         try {
@@ -367,8 +268,6 @@ public class RoomBean implements Serializable{
                 setResDatesByNumberInBooking(user, RemoveResNbr);
                 MockDatabase.getInstance().removeDates(getRangeFromBooking(), findResNameByNumberInBooking(user, RemoveResNbr));
                 user.getBooking().removeReservation(findResByNumberInBooking(user, RemoveResNbr));
-                
-                
             }
         } catch (DoesNotExistException ex) {
             System.out.println(ex.getMessage());
@@ -403,20 +302,19 @@ public class RoomBean implements Serializable{
         }
         throw new DoesNotExistException("Reservation " + resnbr + " does not exist.");
     }
-    private int tempi = 0;
-    private void setResDatesByNumberInBooking(User user, int resnbr) throws DoesNotExistException {
+    
+    public void setResDatesByNumberInBooking(User user, int resnbr) {
         for (Reservation r : user.getBooking().getReservations()) {
-            int tempi = r.getNumber();
-            if (tempi == resnbr) {
-                DelDates = r.getRR();
+            if (r.getNumber() == resnbr) {
+                DelDates = r.getRange();
+                System.out.println(DelDates);
                
             }
         }
-        throw new DoesNotExistException("Reservation " + resnbr + " does not exist.");
     }
     
     private List<LocalDate> getRangeFromBooking(){
-            if(DelDates == null) {
+        if(DelDates == null) {
             return null;
         } else {
             long numOfDaysBetween = ChronoUnit.DAYS.between(DelDates.get(0), DelDates.get(1)); 
